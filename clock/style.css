@@ -1,0 +1,203 @@
+/* Reset and base font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', monospace;
+}
+
+body, html {
+  height: 100%;
+}
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #08001f, #30197d);
+  color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(235, 0, 255, 0.11);
+  border-radius: 10px;
+  backdrop-filter: blur(40px);
+  box-shadow: 0 0 30px #f41b75;
+  position: relative;
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  position: relative;
+  user-select: none;
+}
+
+.clock span {
+  width: 110px;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  text-shadow:
+    0 0 8px #f41b75,
+    0 0 15px #f41b75;
+  transition: color 0.3s ease;
+}
+
+/* Blinking colon */
+.colon {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Labels below numbers */
+#hrs::after,
+#min::after,
+#sec::after {
+  content: attr(data-label);
+  font-size: 16px;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 0 5px #f41b75;
+}
+
+/* Set labels text */
+#hrs { --label: 'HOURS'; }
+#min { --label: 'MINS'; }
+#sec { --label: 'SEC'; }
+
+#hrs::after { content: 'HOURS'; }
+#min::after { content: 'MINS'; }
+#sec::after { content: 'SEC'; }
+
+/* AM/PM styling */
+#ampm {
+  font-size: 40px;
+  font-weight: 700;
+  margin-left: 10px;
+  color: #f41b75;
+  text-shadow: 0 0 10px #f41b75;
+  position: relative;
+  top: 10px;
+  user-select: none;
+}
+
+/* Date styling */
+.date {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #419aff;
+  text-shadow: 0 0 10px #419aff;
+}
+
+/* Controls styling */
+.controls {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.controls button,
+.controls select {
+  background: #f41b75;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  transition: background-color 0.3s ease;
+}
+
+.controls button:hover,
+.controls select:hover {
+  background-color: #d31464;
+}
+
+.controls select {
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+/* Light theme override */
+body.light-theme .hero {
+  background: linear-gradient(45deg, #e0e0e0, #b3b3b3);
+  color: #222;
+}
+
+body.light-theme .container {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 30px #419aff;
+}
+
+body.light-theme .clock span {
+  color: #222;
+  text-shadow: none;
+}
+
+body.light-theme #ampm {
+  color: #419aff;
+  text-shadow: none;
+}
+
+body.light-theme .date {
+  color: #f41b75;
+  text-shadow: none;
+}
+
+body.light-theme .controls button,
+body.light-theme .controls select {
+  background: #419aff;
+  color: white;
+}
+
+body.light-theme .controls button:hover,
+body.light-theme .controls select:hover {
+  background-color: #357bcc;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .clock {
+    font-size: 50px;
+  }
+  .clock span {
+    width: 60px;
+  }
+  .date {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  #ampm {
+    font-size: 30px;
+  }
+  .controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

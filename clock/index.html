@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Clock</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero">
+    <div class="container">
+      <div class="clock">
+        <span id="hrs">00</span>
+        <span class="colon">:</span>
+        <span id="min">00</span>
+        <span class="colon">:</span>
+        <span id="sec">00</span>
+        <span id="ampm"></span>
+      </div>
+      <div class="date" id="date"></div>
+
+      <div class="controls">
+        <button id="toggleFormatBtn">Switch to 24-hour</button>
+        <button id="toggleSecondsBtn">Hide Seconds</button>
+        <select id="themeSelector" aria-label="Select Theme">
+          <option value="dark">Dark Theme</option>
+          <option value="light">Light Theme</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
